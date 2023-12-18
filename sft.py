@@ -34,6 +34,8 @@ target_modules = ['wpe']
 seq_length=512
 dataset_text_field='text'
 output_dir= './result'
+train_split= 'train'
+val_split= 'teset'
 
 def print_trainable_parameters(model):
     """
@@ -74,20 +76,20 @@ model = AutoModelForCausalLM.from_pretrained(
 print_trainable_parameters(model)
 # Step 2: Load the dataset
 dataset = load_from_disk(dataset_name)
-train_dataset = dataset['train']
-validation_dataset = dataset['test']
-train_dataset = train_dataset.select(range(500))
-validation_dataset = validation_dataset.select(range(50))
+train_dataset = dataset[train_split]
+validation_dataset = dataset[val_split]
+#train_dataset = train_dataset.select(range(500))
+#validation_dataset = validation_dataset.select(range(50))
 # Step 3: Define the training arguments
 training_args = TrainingArguments(
     output_dir='./result',
     per_device_train_batch_size=2,
     gradient_accumulation_steps=2,
-    learning_rate=2e-6,
+    learning_rate=2e-4,
     logging_steps=1,
-    num_train_epochs=1,
+    num_train_epochs=40,
     report_to='tensorboard',
-    save_steps=20,
+    save_steps=50,
     gradient_checkpointing=False,
     evaluation_strategy="steps",  # Evaluate the model every logging step
     logging_dir="./result/logs",  # Directory for storing logs
@@ -95,7 +97,7 @@ training_args = TrainingArguments(
     eval_steps=20,  # Evaluate and save checkpoints every 10 steps
     do_eval=True,
     warmup_steps=5,
-    weight_decay=1e-4,
+    weight_decay=1e-3,
     lr_scheduler_type='cosine',
     load_best_model_at_end=True,
     max_grad_norm=1.0,
