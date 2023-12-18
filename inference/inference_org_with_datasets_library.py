@@ -15,7 +15,10 @@ try:
         for row in range(len(test_set)):
             print(f"Q number: {row}")
             line= f"{test_set[row]['input'].replace('###','')}"
+            #medmcqa
             line= line+ "\nChoose one option regarding the question. write your choice at the end of this sentence.\nsentence: my choice is"
+            #pubmedqa
+            #line= line+ "\nwrite yes or no at the end of the sentence.\nsentence: the answer is"
             
             messages = [{
                 "role": "system","content": test_set[row]['instruction']},
