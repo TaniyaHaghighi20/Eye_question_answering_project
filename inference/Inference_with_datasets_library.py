@@ -17,11 +17,11 @@ print(type(merged_model))
 merged_model.to('cuda')
 test_set = load_from_disk('inference/medmcqa/test')
 output_file_path = "run4/inference/medmcqa.llama2.generated.y.txt"  # Replace with the desired path for the output file
-count=0
+
 try:
     with open(output_file_path, 'w') as output_file:
         for row in range(len(test_set)):
-            print(f"Q number: {row}")
+            print(f"question number: {row}")
             line= f"{test_set[row]['input'].replace('###','')}"
             line= line+ "\nChoose one option regarding the question. write your choice at the end of this sentence.\nsentence: my choice is"
             
