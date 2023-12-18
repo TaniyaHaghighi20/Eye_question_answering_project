@@ -69,7 +69,8 @@ model = AutoModelForCausalLM.from_pretrained(
     model_name,
     # quantization_config=quantization_config,
     load_in_8bit=True,
-    device_map=device_map,
+    use_flash_attention_2=True,
+    # device_map=device_map,
     trust_remote_code=True,
     torch_dtype=torch_dtype,
     low_cpu_mem_usage=True
