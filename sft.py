@@ -29,11 +29,11 @@ tqdm.pandas()
 model_name ='path/to/model'
 dataset_name='finetune_data/path/to/data'
 peft_lora_r=16
-peft_lora_alpha=64
+peft_lora_alpha=32
 target_modules = ["q_proj", "k_proj", "v_proj", "out_proj", "fc_in", "fc_out", "wte"]
 seq_length=1024
 dataset_text_field='text'
-output_dir= 'run4/llama2-7b-chat/finetune'
+output_dir= './result'
 train_split= 'train'
 val_split= 'test'
 
@@ -69,7 +69,7 @@ model = AutoModelForCausalLM.from_pretrained(
     model_name,
     # quantization_config=quantization_config,
     load_in_8bit=True,
-    use_flash_attention_2=True,
+    # use_flash_attention_2=True,
     # device_map=device_map,
     trust_remote_code=True,
     torch_dtype=torch_dtype,
@@ -79,16 +79,18 @@ print_trainable_parameters(model)
 
 # Step 2: Load the dataset
 dataset = load_from_disk(dataset_name)
+print(dataset)
 train_dataset = dataset[train_split]
 validation_dataset = dataset[val_split]
-#train_dataset = train_dataset.select(range(500))
-#validation_dataset = validation_dataset.select(range(50))
+train_dataset = train_dataset.select(range(500))
+validation_dataset = validation_dataset.select(range(50))
 
 # Step 3: Define the training arguments
 training_args = TrainingArguments(
     output_dir=output_dir,
     per_device_train_batch_size=64,
-    gradient_accumulation_steps=64,
+    per_device_eval_batch_size = 64,
+    gradient_accumulation_steps=2,
     learning_rate=2e-4,
     logging_steps=1,
     num_train_epochs=40,
@@ -100,19 +102,24 @@ training_args = TrainingArguments(
     save_strategy="steps",  # Save the model checkpoint every logging step
     eval_steps=200,  # Evaluate and save checkpoints every 10 steps
     do_eval=True,
-    warmup_steps=600,
+    warmup_steps=1,
     weight_decay=1e-3,
     lr_scheduler_type='cosine',
     load_best_model_at_end=True,
     max_grad_norm=1.0,
     metric_for_best_model='eval_loss',
-    save_total_limit=10
+    save_total_limit=10,
+    max_steps=-1,
+    dataloader_num_workers =4,
+    do_train=True,
+    logging_first_step=True
     # TODO: uncomment that on the next release
     # gradient_checkpointing_kwargs=script_args.gradient_checkpointing_kwargs,
 )
 
-# Step 4: Define the LoraConfig
+print(training_args)
 
+# Step 4: Define the LoraConfig
 peft_config = LoraConfig(
     r=peft_lora_r,
     lora_alpha=peft_lora_alpha,
@@ -127,8 +134,8 @@ peft_config = LoraConfig(
 trainer = SFTTrainer(
     model=model,
     args=training_args,
-    # max_seq_length=seq_length,
-    packing=True,
+    max_seq_length=seq_length,
+    # packing=True,
     train_dataset=train_dataset,
     eval_dataset=validation_dataset,
     dataset_text_field=dataset_text_field,
