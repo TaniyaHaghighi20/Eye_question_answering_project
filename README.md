@@ -80,3 +80,11 @@ deepspeed SFT.py --deepspeed ds_config.json \
     --dataloader_num_workers 4 \
     --max_grad_norm 1.0
 ```
+
+# Results
+#### MedMCQA Dataset
+![MedMCQA Image](Figures/MedMCQA.png)
+#### PubMedQA Dataset
+![PubMedQA Image](Figures/PubMedQA.png)
+#### AAO Dataset
+![AAO Image](Figures/AAO.png)
