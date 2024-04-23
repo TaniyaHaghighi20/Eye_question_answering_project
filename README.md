@@ -11,15 +11,19 @@ We have made available the pretrained model, I-llama_P, along with the fine-tune
 | Row 3    | Data     |
 
 
-In addition, I-lit and I-QA+ datasets have been made available at huggingface.
+In addition, I-lit and I-QA+ datasets have been made available at:
 | Dataset  | Link | 
 | -------- | -------- |
 | I-lit    | [QIAIUNCC/I-lit](https://huggingface.co/datasets/QIAIUNCC/I-lit)     | 
 | I-QA+    | [QIAIUNCC/I-QA-PLUS](https://huggingface.co/datasets/QIAIUNCC/I-QA-PLUS)     | 
 
+### Training
+The training process can be divided as two phases: pretrain and fine-tuning.
 
-# pre-training llama2
-deepspeed Pre-train.py --deepspeed ds_config.json --model_name_or_path meta-llama/Llama-2-7b-chat-hf \
+# pre-training
+The script for pretraining:
+
+```deepspeed Pre-train.py --deepspeed ds_config.json --model_name_or_path meta-llama/Llama-2-7b-chat-hf \
     --per_device_train_batch_size 64 \
     --per_device_eval_batch_size 64 \
     --do_train \
@@ -43,9 +47,12 @@ deepspeed Pre-train.py --deepspeed ds_config.json --model_name_or_path meta-llam
     --evaluation_strategy "steps" \
     --eval_steps 400 \
     --dataloader_num_workers 4 \
-    --max_grad_norm 1.0
+    --max_grad_norm 1.0```
+
 
 # SFT
+The script for fine-tuning:
+
 deepspeed SFT.py --deepspeed ds_config.json \
     --model_name_or_path path/to/pretrained/model \
     --data_path path/to/data \
