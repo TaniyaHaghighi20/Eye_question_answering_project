@@ -52,6 +52,7 @@ deepspeed Pre-train.py --deepspeed ds_config.json --model_name_or_path meta-llam
 ```markdown
 ### SFT
 The script for fine-tuning:
+
 ```bash
 deepspeed SFT.py --deepspeed ds_config.json \
     --model_name_or_path path/to/pretrained/model \
