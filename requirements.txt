@@ -5,16 +5,3 @@ datasets
 deepspeed
 evaluate
 tensorboard
-trl
-
-
-
-
-
-
-
-
-
-
-
-
