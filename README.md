@@ -50,10 +50,6 @@ deepspeed Pre-train.py --deepspeed ds_config.json --model_name_or_path meta-llam
     --max_grad_norm 1.0
 
 
-
-
-```markdown
-
 # SFT
 The script for fine-tuning:
 ```bash
