@@ -22,8 +22,8 @@ The training process can be divided as two phases: pretrain and fine-tuning.
 
 # pre-training
 The script for pretraining:
-
-```deepspeed Pre-train.py --deepspeed ds_config.json --model_name_or_path meta-llama/Llama-2-7b-chat-hf \
+```bash
+deepspeed Pre-train.py --deepspeed ds_config.json --model_name_or_path meta-llama/Llama-2-7b-chat-hf \
     --per_device_train_batch_size 64 \
     --per_device_eval_batch_size 64 \
     --do_train \
@@ -47,12 +47,12 @@ The script for pretraining:
     --evaluation_strategy "steps" \
     --eval_steps 400 \
     --dataloader_num_workers 4 \
-    --max_grad_norm 1.0```
+    --max_grad_norm 1.0
 
 
 # SFT
 The script for fine-tuning:
-
+```bash
 deepspeed SFT.py --deepspeed ds_config.json \
     --model_name_or_path path/to/pretrained/model \
     --data_path path/to/data \
