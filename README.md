@@ -89,7 +89,7 @@ deepspeed SFT.py --deepspeed ds_config.json \
 #### AAO Dataset
 ![AAO Image](Figures/AAO.png)
 #### 20-Question Set
-| model | Score | Alignment | Grasped | Irrelevant | Relevant | Harm |
+| model | Score /200 | Alignment /20 | Grasped /20 | Irrelevant /20 | Relevant /20 | Harm /100|
 |-----------------|-------|-----------|---------|------------|----------|------|
 | Llama 2         | 100   | 12        | 20      | 19         | 17.25    | 54   |
 | I-llama-qa      | 81    | 8.5       | 19.5    | 18         | 15.5     | 61   |
