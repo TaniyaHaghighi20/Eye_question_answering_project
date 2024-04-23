@@ -17,10 +17,10 @@ In addition, I-lit and I-QA+ datasets have been made available at:
 | I-lit    | [QIAIUNCC/I-lit](https://huggingface.co/datasets/QIAIUNCC/I-lit)     | 
 | I-QA+    | [QIAIUNCC/I-QA-PLUS](https://huggingface.co/datasets/QIAIUNCC/I-QA-PLUS)     | 
 
-### Training
+# Training
 The training process can be divided as two phases: pretrain and fine-tuning.
 
-# pre-training
+### pre-training
 The script for pretraining:
 ```bash
 deepspeed Pre-train.py --deepspeed ds_config.json --model_name_or_path meta-llama/Llama-2-7b-chat-hf \
@@ -49,8 +49,8 @@ deepspeed Pre-train.py --deepspeed ds_config.json --model_name_or_path meta-llam
     --dataloader_num_workers 4 \
     --max_grad_norm 1.0
 
-
-# SFT
+```Markdown
+### SFT
 The script for fine-tuning:
 ```bash
 deepspeed SFT.py --deepspeed ds_config.json \
