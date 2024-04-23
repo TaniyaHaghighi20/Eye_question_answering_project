@@ -48,8 +48,8 @@ deepspeed Pre-train.py --deepspeed ds_config.json --model_name_or_path meta-llam
     --eval_steps 400 \
     --dataloader_num_workers 4 \
     --max_grad_norm 1.0
-```markdown
 
+```markdown
 
 # SFT
 The script for fine-tuning:
