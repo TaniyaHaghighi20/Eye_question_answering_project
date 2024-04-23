@@ -1,9 +1,14 @@
 # Eye_question_answering_project
 This GitHub repository hosts “Eye (I) - Llama”, a specialized large language model tailored for the field of ophthalmology. Our research demonstrates that for medical subspecialty large language models (LLMs), an effective approach is to first pretrain them with a domain-specific corpus, followed by fine-tuning with a dataset that includes instructions.
 
-We have made available the pretrained model, I-llama_P, along with the fine-tuned models, I-llama_qa and I-llama_gqa. These models have exhibited significant improvements over the Llama 2 model and have outperformed ChatDoctor in various evaluations.
-
 ![AAO Image](Figures/Overall_Framework_Eye_LLAMA.png)
+
+We have made available the pretrained model, I-llama_P, along with the fine-tuned models, I-llama_qa and I-llama_gqa. These models have exhibited significant improvements over the Llama 2 model and have outperformed ChatDoctor in various evaluations.
+| Dataset  | Link | 
+| -------- | -------- |
+| I-lit    | [QIAIUNCC/I-lit](https://huggingface.co/datasets/QIAIUNCC/I-lit)     | 
+| I-QA+    | [QIAIUNCC/I-QA-PLUS](https://huggingface.co/datasets/QIAIUNCC/I-QA-PLUS)     | 
+
 
 # pre-training llama2
 deepspeed Pre-train.py --deepspeed ds_config.json --model_name_or_path meta-llama/Llama-2-7b-chat-hf \
