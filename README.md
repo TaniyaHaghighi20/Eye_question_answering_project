@@ -88,3 +88,11 @@ deepspeed SFT.py --deepspeed ds_config.json \
 ![PubMedQA Image](Figures/PubMedQA.png)
 #### AAO Dataset
 ![AAO Image](Figures/AAO.png)
+#### 20-Question Set
+| model | Score | Alignment | Grasped | Irrelevant | Relevant | Harm |
+|-----------------|-------|-----------|---------|------------|----------|------|
+| Llama 2         | 100   | 12        | 20      | 19         | 17.25    | 54   |
+| I-llama-qa      | 81    | 8.5       | 19.5    | 18         | 15.5     | 61   |
+| I-llama-gqa     | 116   | 14        | 20      | 11.45      | 17.25    | 51   |
+| ChatDoctor      | 89.5  | 10        | 20      | 15         | 14.5     | 51   |
+| ChatGPT (GPT3.5)| 160   | 19        | 20      | 6          | 19.75    | 28   |
