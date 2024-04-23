@@ -1,13 +1,12 @@
 
-path_to_checkpoint = "/data1/sina/eyeGPT/eyeGPT2/LLM/gpt2-model/checkpoint-12400"
-
+path_to_checkpoint = "path/to/peft/checkpoint"
+path_to_merged_model = "path/to/merged/model"
 
 from transformers import AutoTokenizer
 from transformers import AutoModelForCausalLM
 from peft import PeftModel
 
-model_name = "gpt2-xl"
-path_to_whole_model = "/data1/sina/eyeGPT/eyeGPT2/LLM/gpt2-model/pretrained"
+model_name = "meta-llama/Llama-2-7b-chat-hf"
 model = AutoModelForCausalLM.from_pretrained(model_name)
 
 peft_model = PeftModel.from_pretrained(model, path_to_checkpoint)
@@ -19,8 +18,8 @@ merged_model = peft_model.merge_and_unload()
 tokenizer = AutoTokenizer.from_pretrained(path_to_checkpoint)
 
 # Save the tokenizer
-tokenizer.save_pretrained(path_to_whole_model)
+tokenizer.save_pretrained(path_to_merged_model)
 
 
 # Save the merged model
-merged_model.save_pretrained(path_to_whole_model)
+merged_model.save_pretrained(path_to_merged_model)
