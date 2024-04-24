@@ -6,16 +6,16 @@ This GitHub repository hosts “Eye (I) - Llama”, a specialized large language
 We have made available the pretrained model, I-llama_P, along with the fine-tuned models, I-llama_qa and I-llama_gqa. These models have exhibited significant improvements over the Llama 2 model and have outperformed ChatDoctor in various evaluations.
 | Model | Link | 
 | -------- | -------- |
-| Row 1    | Data     |
-| Row 2    | Data     |
-| Row 3    | Data     |
+| EYE-Llama_p    | [https://huggingface.co/QIAIUNCC/EYE-Llama_p](https://huggingface.co/QIAIUNCC/EYE-Llama_p) |
+| EYE-Llama_qa    | [https://huggingface.co/QIAIUNCC/EYE-Llama_qa](https://huggingface.co/QIAIUNCC/EYE-Llama_qa)     |
+| EYE-Llama_gqa    | [https://huggingface.co/QIAIUNCC/EYE-Llama_gqa](https://huggingface.co/QIAIUNCC/EYE-Llama_gqa)     |
 
 
 In addition, I-lit and I-QA+ datasets have been made available at:
 | Dataset  | Link | 
 | -------- | -------- |
-| I-lit    | [QIAIUNCC/I-lit](https://huggingface.co/datasets/QIAIUNCC/I-lit)     | 
-| I-QA+    | [QIAIUNCC/I-QA-PLUS](https://huggingface.co/datasets/QIAIUNCC/I-QA-PLUS)     | 
+| EYE-lit    | [QIAIUNCC/EYE-lit](https://huggingface.co/datasets/QIAIUNCC/EYE-lit)     | 
+| EYE-QA+    | [QIAIUNCC/EYE-QA-PLUS](https://huggingface.co/datasets/QIAIUNCC/EYE-QA-PLUS)     | 
 
 # Training
 The training process can be divided as two phases: pretrain and fine-tuning.
