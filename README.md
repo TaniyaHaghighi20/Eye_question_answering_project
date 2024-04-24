@@ -82,13 +82,13 @@ deepspeed SFT.py --deepspeed ds_config.json \
 ```
 
 # Results
-#### MedMCQA Dataset ([available at Huggingface](https://huggingface.co/datasets/QIAIUNCC/EYE-MedMCQA-test))
+#### MedMCQA test set ([available at Huggingface](https://huggingface.co/datasets/QIAIUNCC/EYE-MedMCQA-test))
 ![MedMCQA Image](Figures/MedMCQA.png)
-#### PubMedQA Dataset ([available at Huggingface](https://huggingface.co/datasets/QIAIUNCC/EYE-PubMedQA-test))
+#### PubMedQA test set ([available at Huggingface](https://huggingface.co/datasets/QIAIUNCC/EYE-PubMedQA-test))
 ![PubMedQA Image](Figures/PubMedQA.png)
-#### AAO Dataset ([available at Huggingface](https://huggingface.co/datasets/QIAIUNCC/EYE-AAO-test))
+#### AAO test set ([available at Huggingface](https://huggingface.co/datasets/QIAIUNCC/EYE-AAO-test))
 ![AAO Image](Figures/AAO.png)
-#### 20-Question Set ([available at Huggingface](https://huggingface.co/datasets/QIAIUNCC/EYE-20-Question-test))
+#### 20-Question test set ([available at Huggingface](https://huggingface.co/datasets/QIAIUNCC/EYE-20-Question-test))
 | model | Score /200 | Alignment /20 | Grasped /20 | Irrelevant /20 | Relevant /20 | Harm /100|
 |-----------------|-------|-----------|---------|------------|----------|------|
 | Llama 2         | 100   | 12        | 20      | 19         | 17.25    | 54   |
